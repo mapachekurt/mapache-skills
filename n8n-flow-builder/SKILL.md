@@ -588,3 +588,43 @@ When completing n8n work, always provide:
 - This skill codifies Kurt's n8n workflow patterns and deployment process
 - Environments were recently reorganized: old "dev" → "staging"
 - Railway hosts both staging and prod instances plus n8n MCP server
+
+## Meta-Pattern: Self-Improvement Protocol
+
+### When Discovering n8n Workflow Improvements
+
+**If the improvement is a general pattern:**
+1. Update this skill (n8n-flow-builder)
+2. Update the forked n8n MCP repository
+3. Document in both places
+4. Consider PR to upstream n8n MCP
+
+**If the improvement is cross-system:**
+1. Consider if it belongs in integration-workflows skill
+2. Update integration-workflows if applicable
+
+### Forked n8n MCP Repository
+**Location:** [Your GitHub fork of n8n MCP]
+**Purpose:** Community benefit + your own n8n agent improvements
+**Update When:**
+- New n8n node patterns discovered
+- Better error handling approaches
+- Deployment workflow improvements
+- Railway-specific optimizations
+
+### Example: Adding a New Pattern
+```
+Discovery: "Webhook validation pattern works great!"
+  ↓
+1. Add to n8n-flow-builder skill (this file)
+2. Update forked n8n-mcp/docs/patterns.md
+3. Test in n8n agent project
+4. Commit both repos
+5. Optional: PR to upstream n8n-mcp
+```
+
+This ensures improvements benefit:
+- Future you
+- Your n8n agent project  
+- Other n8n MCP users
+- The broader community

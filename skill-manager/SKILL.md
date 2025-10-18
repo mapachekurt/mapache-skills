@@ -373,3 +373,115 @@ Once skill-manager is working:
 - [Anthropic Skills Documentation](https://docs.claude.com/en/docs/agents-and-tools/agent-skills/overview)
 - [Skills GitHub Repository](https://github.com/anthropics/skills)
 - [Skills Cookbook](https://github.com/anthropics/claude-cookbooks/tree/main/skills)
+
+## Auto-Trigger Pattern Recognition
+
+### When to Automatically Trigger skill-manager
+
+Claude should automatically suggest skill creation when detecting these patterns:
+
+**Pattern 1: Repeated Workflow**
+```
+User does same multi-step process twice
+  → "This feels like a pattern we should capture in a skill"
+  → Offer to create skill
+```
+
+**Pattern 2: Complex Integration**
+```
+User coordinates multiple MCPs successfully
+  → "This cross-MCP workflow could be an integration-workflows entry"
+  → Offer to add to integration-workflows skill
+```
+
+**Pattern 3: MCP Enhancement**
+```
+Discovering better way to use GitHub/Linear/n8n
+  → "Should we add this to the relevant skill?"
+  → Update existing skill + MCP repo (if forked)
+```
+
+**Pattern 4: Efficiency Discovery**
+```
+User: "Oh that's much better!"
+Claude: "Want to capture this approach in a skill?"
+```
+
+**Pattern 5: User Explicitly States**
+```
+User: "This is how we always do it"
+User: "Remember this pattern"
+User: "We should capture this"
+  → Immediately offer skill creation
+```
+
+### Auto-Trigger Workflow
+
+When pattern detected:
+
+**Step 1: Recognition**
+```
+Claude: "💡 This feels like a repeatable pattern!
+We've now [created X successfully / solved Y twice / found Z approach].
+Should I create/update a skill to capture this?"
+```
+
+**Step 2: If User Says Yes**
+```
+Claude uses skill-manager to:
+1. Determine if new skill or update existing
+2. Draft skill content based on conversation
+3. Show preview to user
+4. Create/update skill files
+5. Generate zip automatically
+6. Prompt for upload (see below)
+```
+
+**Step 3: Upload Prompt**
+```
+Claude: "✅ Skill ready!
+
+📦 Upload to Claude Desktop:
+1. File location: C:\path\to\skill.zip
+2. Go to: Settings > Capabilities > Upload skill
+3. Drag and drop the zip file
+4. Toggle skill ON
+
+Should I wait while you do this, or continue?
+(Say 'uploaded' when done)"
+```
+
+**Step 4: Verification** (Optional)
+```
+After user says "uploaded":
+Claude: "Great! Let me verify it loaded correctly by checking if
+I can see it in my skills list... [test query]"
+```
+
+### Automatic Zip Generation
+
+Every time a skill is created or updated:
+
+**Auto-Generate Process:**
+```python
+# Automatically runs after any skill modification
+1. Navigate to skill directory
+2. Create zip with SKILL.md at root (+ any other files)
+3. Place in claude-skills/ parent directory
+4. Report location to user
+```
+
+**File Naming:**
+```
+skill-name.zip          # For new/updated skills
+skill-name-v1.2.0.zip   # For versioned releases (optional)
+```
+
+**Zip Contents:**
+```
+skill.zip/
+├── SKILL.md         # At root (required by Claude)
+├── README.md        # If exists
+├── scripts/         # If exists
+└── resources/       # If exists
+```
