@@ -27,7 +27,7 @@ class SkillDeployer:
     
     def deploy_to_code_cli(self):
         """Deploy skill to Claude Code CLI (~/.claude/skills/)."""
-        print(f"📦 Deploying {self.skill_name} to Claude Code CLI...")
+        print(f"Deploying {self.skill_name} to Claude Code CLI...")
         
         # Target directory for Claude Code
         home = Path.home()
@@ -40,9 +40,8 @@ class SkillDeployer:
         
         # Check if already exists
         if target.exists():
-            print(f"   ⚠️  Skill already exists at {target}")
-
-            print(f"   🔄 Removing old version...")
+            print(f"   Warning: Skill already exists at {target}")
+            print(f"   Removing old version...")
             if target.is_symlink():
                 target.unlink()
             else:
@@ -51,23 +50,23 @@ class SkillDeployer:
         # Try to create symlink first (preferred)
         try:
             target.symlink_to(self.skill_path.resolve())
-            print(f"   🔗 Created symlink: {target} -> {self.skill_path}")
-            print(f"   ✅ Successfully deployed to Code CLI")
+            print(f"   Created symlink: {target} -> {self.skill_path}")
+            print(f"   Successfully deployed to Code CLI")
             return True
         except OSError as e:
             # If symlink fails (Windows permissions), copy instead
-            print(f"   ⚠️  Symlink failed ({e}), copying files instead...")
+            print(f"   Symlink failed ({e}), copying files instead...")
             shutil.copytree(self.skill_path, target)
-            print(f"   📋 Copied to: {target}")
-            print(f"   ✅ Successfully deployed to Code CLI")
+            print(f"   Copied to: {target}")
+            print(f"   Successfully deployed to Code CLI")
             return True
     
     def deploy_to_api(self):
         """Deploy skill to Claude API via /v1/skills endpoint."""
-        print(f"📦 Deploying {self.skill_name} to Claude API...")
-        print(f"   ⚠️  API deployment not yet implemented")
-        print(f"   📝 Manual upload required via Claude Console")
-        print(f"   🔗 Visit: https://console.anthropic.com")
+        print(f"Deploying {self.skill_name} to Claude API...")
+        print(f"   API deployment not yet implemented")
+        print(f"   Manual upload required via Claude Console")
+        print(f"   Visit: https://console.anthropic.com")
         return False
     
     def deploy(self, environments):
@@ -109,18 +108,18 @@ def main():
     skill_path = Path(args.skill_path)
     
     if not skill_path.exists():
-        print(f"❌ Error: Skill directory not found: {skill_path}")
+        print(f"Error: Skill directory not found: {skill_path}")
         sys.exit(1)
     
     # Validate first if requested
     if args.validate:
-        print("🔍 Running validation first...\n")
+        print("Running validation first...\n")
         result = subprocess.run(
             [sys.executable, Path(__file__).parent / "validate_skill.py", str(skill_path)],
             capture_output=False
         )
         if result.returncode != 0:
-            print("\n❌ Validation failed. Fix errors before deploying.")
+            print("\nValidation failed. Fix errors before deploying.")
             sys.exit(1)
         print()
 
@@ -134,9 +133,9 @@ def main():
     print("=" * 60)
     
     if success:
-        print("\n🎉 Deployment complete!")
+        print("\nDeployment complete!")
     else:
-        print("\n⚠️  Deployment completed with warnings")
+        print("\nDeployment completed with warnings")
     
     sys.exit(0 if success else 1)
 
