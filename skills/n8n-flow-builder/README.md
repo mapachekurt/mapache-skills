@@ -8,11 +8,11 @@ This skill is part of the mapache-skills repository.
 
 For Claude Code CLI:
 ```bash
-ln -s "C:\Users\Kurt Anderson\github projects\mapache-skills" ~/.claude/skills
+ln -s "C:\Users\Kurt Anderson\github projects\mapache-skills\skills" ~/.claude/skills
 ```
 
 For Claude Desktop:
-1. Zip the n8n-flow-builder/ directory
+1. Zip the skills/n8n-flow-builder/ directory
 2. Upload via Settings > Capabilities > Upload skill
 
 ## What This Skill Provides

@@ -25,13 +25,13 @@ Meta-skill for managing the complete lifecycle of all other Mapache Skills. Ensu
   - Feature branches = New skill development
 
 ### Deployment Targets
-1. **Code CLI**: `~/.claude/skills/` (symlinked to git repo)
+1. **Code CLI**: `~/.claude/skills/` (symlinked to `skills/` folder)
 2. **Claude API**: Via `/v1/skills` endpoint (programmatic)
 3. **Claude Desktop**: Manual upload or API-based (if available)
 
 ### Standard Skill Structure
 ```
-skill-name/
+skills/skill-name/
 ├── SKILL.md              # Required: YAML frontmatter + instructions
 ├── README.md             # Human documentation
 ├── scripts/              # Optional: Executable code
@@ -149,7 +149,7 @@ Validates skill structure and security.
 
 **Example**:
 ```bash
-python scripts/validate_skill.py skill-name/
+python scripts/validate_skill.py skills/skill-name/
 ```
 
 ### `scripts/deploy_skill.py`
@@ -163,7 +163,7 @@ Deploys skills to target environments.
 
 **Example**:
 ```bash
-python scripts/deploy_skill.py n8n-flow-builder/ --env all --commit
+python scripts/deploy_skill.py skills/n8n-flow-builder/ --env all --commit
 ```
 
 ## Security Considerations
@@ -253,7 +253,7 @@ Claude (using skill-manager):
 User: "Update linear-orchestration to include new status field format"
 
 Claude (using skill-manager):
-1. 📖 Reads linear-orchestration/SKILL.md from git
+1. 📖 Reads skills/linear-orchestration/SKILL.md from git
 2. ✏️ Makes changes to include new status field
 3. 👀 Shows diff: "Here's what I'm changing..."
 4. ✅ User approves
@@ -291,7 +291,7 @@ Claude: Searches repository and returns:
 
 3. Set up Code CLI symlink (run once):
    ```bash
-   ln -s "C:\Users\Kurt Anderson\github projects\mapache-skills" ~/.claude/skills
+   ln -s "C:\Users\Kurt Anderson\github projects\mapache-skills\skills" ~/.claude/skills
    ```
 
 4. Install Python dependencies (if using scripts):
@@ -465,7 +465,7 @@ Every time a skill is created or updated:
 **Auto-Generate Process:**
 ```python
 # Automatically runs after any skill modification
-1. Navigate to skill directory
+1. Navigate to skills/skill-name directory
 2. Create zip with SKILL.md at root (+ any other files)
 3. Place in mapache-skills/ parent directory
 4. Report location to user

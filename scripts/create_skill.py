@@ -47,7 +47,7 @@ This skill is part of the mapache-skills repository.
 
 For Claude Code CLI:
 ```bash
-ln -s "C:\\Users\\Kurt Anderson\\github projects\\mapache-skills" ~/.claude/skills
+ln -s "C:\\Users\\Kurt Anderson\\github projects\\mapache-skills\\skills" ~/.claude/skills
 ```
 
 ## Usage
@@ -70,7 +70,7 @@ SKILLMETA_TEMPLATE = """{
 def create_skill(name: str, description: str, base_path: str = None):
     """Create a new skill directory with template files."""
     if base_path is None:
-        base_path = Path(__file__).parent.parent
+        base_path = Path(__file__).parent.parent / "skills"
     else:
         base_path = Path(base_path)
     

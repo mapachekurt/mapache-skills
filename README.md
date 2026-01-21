@@ -14,12 +14,16 @@ Skills are portable, composable instruction packages that work with any LLM that
 mapache-skills/
 ├── README.md
 ├── .gitignore
-├── skill-manager/           # Meta-skill for managing all other skills
-│   └── SKILL.md
-└── scripts/                 # Helper scripts for skill lifecycle
-    ├── create_skill.py      # Scaffold new skills
-    ├── validate_skill.py    # Validate skill structure
-    └── deploy_skill.py      # Deploy to environments
+├── skills/                  # Core skill packages
+│   ├── skill-manager/       # Meta-skill for managing all other skills
+│   ├── n8n-flow-builder/
+│   └── ...
+├── scripts/                 # Helper scripts for skill lifecycle
+│   ├── create_skill.py
+│   ├── validate_skill.py
+│   └── deploy_skill.py
+├── lab/                     # Experimental and WIP projects
+└── tools/                   # Utility scripts and external tools
 ```
 
 ## Quick Start
@@ -30,7 +34,7 @@ Upload skills via Settings > Capabilities > Upload skill
 ### For Claude Code CLI
 ```bash
 # Symlink this repo to Claude Code skills directory
-ln -s "C:\Users\Kurt Anderson\github projects\mapache-skills" ~/.claude/skills
+ln -s "C:\Users\Kurt Anderson\github projects\mapache-skills\skills" ~/.claude/skills
 ```
 
 ### For Claude API
