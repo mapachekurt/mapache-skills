@@ -4,11 +4,11 @@
 Expert guidance for designing, building, and maintaining n8n workflows across dev/staging/prod environments on Railway with MCP integration. Handles flow authoring, node configuration, error handling, and deployment patterns.
 
 ## Installation
-This skill is part of the claude-skills repository.
+This skill is part of the mapache-skills repository.
 
 For Claude Code CLI:
 ```bash
-ln -s "C:\Users\Kurt Anderson\github projects\claude-skills" ~/.claude/skills
+ln -s "C:\Users\Kurt Anderson\github projects\mapache-skills" ~/.claude/skills
 ```
 
 For Claude Desktop:

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Scaffold new Claude Skills from templates.
+Scaffold new Mapache Skills from templates.
 
 Usage:
     python create_skill.py --name "my-skill" --description "What it does"
@@ -43,11 +43,11 @@ README_TEMPLATE = """# {title}
 {description}
 
 ## Installation
-This skill is part of the claude-skills repository.
+This skill is part of the mapache-skills repository.
 
 For Claude Code CLI:
 ```bash
-ln -s "C:\\Users\\Kurt Anderson\\github projects\\claude-skills" ~/.claude/skills
+ln -s "C:\\Users\\Kurt Anderson\\github projects\\mapache-skills" ~/.claude/skills
 ```
 
 ## Usage
@@ -130,7 +130,7 @@ def create_skill(name: str, description: str, base_path: str = None):
 
 def main():
     parser = argparse.ArgumentParser(
-        description='Create a new Claude Skill from template'
+        description='Create a new Mapache Skill from template'
     )
     parser.add_argument(
         '--name',

@@ -4,11 +4,11 @@
 Complete directory of available MCP servers with usage guidelines, tool categories, and selection criteria
 
 ## Installation
-This skill is part of the claude-skills repository.
+This skill is part of the mapache-skills repository.
 
 For Claude Code CLI:
 ```bash
-ln -s "C:\Users\Kurt Anderson\github projects\claude-skills" ~/.claude/skills
+ln -s "C:\Users\Kurt Anderson\github projects\mapache-skills" ~/.claude/skills
 ```
 
 ## Usage

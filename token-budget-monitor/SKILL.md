@@ -1,6 +1,6 @@
 ---
 name: token-budget-monitor
-description: Proactively monitors Claude conversation token usage and warns when approaching limits. Tracks usage patterns and predicts when limits will be reached based on current pace.
+description: Proactively monitors conversation token usage and warns when approaching limits. Tracks usage patterns and predicts when limits will be reached based on current pace.
 ---
 
 # Token Budget Monitor

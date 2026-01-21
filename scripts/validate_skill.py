@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Validate Claude Skill structure, YAML frontmatter, and security.
+Validate Mapache Skill structure, YAML frontmatter, and security.
 
 Usage:
     python validate_skill.py skill-name/
@@ -106,7 +106,7 @@ class SkillValidator:
 
 def main():
     parser = argparse.ArgumentParser(
-        description='Validate Claude Skill structure and security'
+        description='Validate Mapache Skill structure and security'
     )
     parser.add_argument(
         'skill_path',

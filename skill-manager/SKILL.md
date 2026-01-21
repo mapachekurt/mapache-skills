@@ -1,12 +1,12 @@
 ---
 name: skill-manager
-description: Automate creation, versioning, deployment, and synchronization of Claude Skills across Desktop, Code CLI, and API environments. Manages skill lifecycle from scaffolding to deployment.
+description: Automate creation, versioning, deployment, and synchronization of Mapache Skills across Desktop, Code CLI, and API environments. Manages skill lifecycle from scaffolding to deployment.
 ---
 
 # Skill Manager
 
 ## Purpose
-Meta-skill for managing the complete lifecycle of all other Claude Skills. Ensures skills are version-controlled in Git and automatically synchronized across all Claude environments (Desktop, Code CLI, API).
+Meta-skill for managing the complete lifecycle of all other Mapache Skills. Ensures skills are version-controlled in Git and automatically synchronized across all environments (Desktop, Code CLI, API).
 
 ## Core Capabilities
 - **Create**: Scaffold new skills from templates with proper structure
@@ -18,14 +18,14 @@ Meta-skill for managing the complete lifecycle of all other Claude Skills. Ensur
 ## Architecture Overview
 
 ### Source of Truth
-- **Git Repository**: `C:\Users\Kurt Anderson\github projects\claude-skills\`
+- **Git Repository**: `C:\Users\Kurt Anderson\github projects\mapache-skills\`
 - **Branch Strategy**:
   - `main` = Production skills (stable, tested)
   - `dev` = Experimental/WIP skills
   - Feature branches = New skill development
 
 ### Deployment Targets
-1. **Claude Code CLI**: `~/.claude/skills/` (symlinked to git repo)
+1. **Code CLI**: `~/.claude/skills/` (symlinked to git repo)
 2. **Claude API**: Via `/v1/skills` endpoint (programmatic)
 3. **Claude Desktop**: Manual upload or API-based (if available)
 
@@ -283,7 +283,7 @@ Claude: Searches repository and returns:
 1. Ensure git repository exists at expected path
 2. Initialize git if not already done:
    ```bash
-   cd "C:\Users\Kurt Anderson\github projects\claude-skills"
+   cd "C:\Users\Kurt Anderson\github projects\mapache-skills"
    git init
    git add .
    git commit -m "Initial commit: skill-manager"
@@ -291,7 +291,7 @@ Claude: Searches repository and returns:
 
 3. Set up Code CLI symlink (run once):
    ```bash
-   ln -s "C:\Users\Kurt Anderson\github projects\claude-skills" ~/.claude/skills
+   ln -s "C:\Users\Kurt Anderson\github projects\mapache-skills" ~/.claude/skills
    ```
 
 4. Install Python dependencies (if using scripts):
@@ -467,7 +467,7 @@ Every time a skill is created or updated:
 # Automatically runs after any skill modification
 1. Navigate to skill directory
 2. Create zip with SKILL.md at root (+ any other files)
-3. Place in claude-skills/ parent directory
+3. Place in mapache-skills/ parent directory
 4. Report location to user
 ```
 

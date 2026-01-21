@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Deploy Claude Skills to target environments.
+Deploy Mapache Skills to target environments.
 
 Usage:
     python deploy_skill.py skill-name/ --env code
@@ -85,7 +85,7 @@ class SkillDeployer:
 
 def main():
     parser = argparse.ArgumentParser(
-        description='Deploy Claude Skill to target environments'
+        description='Deploy Mapache Skill to target environments'
     )
     parser.add_argument(
         'skill_path',
