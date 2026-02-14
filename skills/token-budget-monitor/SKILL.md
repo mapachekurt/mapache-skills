@@ -1,6 +1,7 @@
 ---
 name: token-budget-monitor
 description: Proactively monitors conversation token usage and warns when approaching limits. Tracks usage patterns and predicts when limits will be reached based on current pace.
+nosync: true
 ---
 
 # Token Budget Monitor

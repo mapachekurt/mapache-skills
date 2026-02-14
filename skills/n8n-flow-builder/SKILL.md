@@ -584,7 +584,7 @@ When completing n8n work, always provide:
 
 - Created: 2025-10-18
 - Author: Kurt Anderson
-- Version: 1.0.0
+- Version: 1.0.1
 - This skill codifies Kurt's n8n workflow patterns and deployment process
 - Environments were recently reorganized: old "dev" → "staging"
 - Railway hosts both staging and prod instances plus n8n MCP server
