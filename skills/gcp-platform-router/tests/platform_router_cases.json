@@ -1,0 +1,102 @@
+[
+    {
+        "id": "cr_01",
+        "description": "An agent that creates Linear issues and updates statuses",
+        "expected_target": "cloud_run"
+    },
+    {
+        "id": "cr_02",
+        "description": "A GitHub agent that reviews PRs and merges branches",
+        "expected_target": "cloud_run"
+    },
+    {
+        "id": "cr_03",
+        "description": "An MCP router that dispatches tool calls to specific servers",
+        "expected_target": "cloud_run"
+    },
+    {
+        "id": "cr_04",
+        "description": "A background worker that runs scheduled database cleanups",
+        "expected_target": "cloud_run"
+    },
+    {
+        "id": "cr_05",
+        "description": "An orchestrator agent that coordinates multi-agent workflows",
+        "expected_target": "cloud_run"
+    },
+    {
+        "id": "cr_06",
+        "description": "A browser agent that performs E2E testing using Playwright",
+        "expected_target": "cloud_run"
+    },
+    {
+        "id": "cr_07",
+        "description": "A cost monitoring agent that analyzes cloud spend and reports failures",
+        "expected_target": "cloud_run"
+    },
+    {
+        "id": "ae_01",
+        "description": "A long-lived personal AI assistant that remembers user preferences over months",
+        "expected_target": "agent_engine"
+    },
+    {
+        "id": "ae_02",
+        "description": "A company context bot that holds business strategy and conversational history",
+        "expected_target": "agent_engine"
+    },
+    {
+        "id": "ae_03",
+        "description": "A project manager persona that interacts with humans and remembers tradeoffs",
+        "expected_target": "agent_engine"
+    },
+    {
+        "id": "ae_04",
+        "description": "A founder copilot for strategic thinking and long-term brainstorming",
+        "expected_target": "agent_engine"
+    },
+    {
+        "id": "ae_05",
+        "description": "An architecture advisor that maintains a shared mental model of the system",
+        "expected_target": "agent_engine"
+    },
+    {
+        "id": "ae_06",
+        "description": "A conversational mentor that tracks a student's progress and history",
+        "expected_target": "agent_engine"
+    },
+    {
+        "id": "hy_01",
+        "description": "An autonomous CEO agent with a conversational persona and execution hands",
+        "expected_target": "hybrid"
+    },
+    {
+        "id": "hy_02",
+        "description": "A project lead that chats with users but also triggers tool-heavy sync tasks",
+        "expected_target": "hybrid"
+    },
+    {
+        "id": "hy_03",
+        "description": "A research companion that conversationalizes while driving a background crawler",
+        "expected_target": "hybrid"
+    },
+    {
+        "id": "cr_08",
+        "description": "Policy enforcement agent that validates configurations against rules",
+        "expected_target": "cloud_run"
+    },
+    {
+        "id": "cr_09",
+        "description": "Data sync agent mirroring content between Supabase and Notion",
+        "expected_target": "cloud_run"
+    },
+    {
+        "id": "ae_07",
+        "description": "Onboarding guide that walks users through multi-stage sessions",
+        "expected_target": "agent_engine"
+    },
+    {
+        "id": "hy_04",
+        "description": "Investment advisor persona with an automated trading execution engine",
+        "expected_target": "hybrid"
+    }
+]

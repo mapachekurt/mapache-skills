@@ -1,0 +1,28 @@
+# Vertex AI Agent Engine Deployment Configuration
+name: chief
+runtime: python311
+entrypoint: agent:app
+
+# Scaling configuration
+scaling:
+  min_instances: 1
+  max_instances: 10
+  concurrency: 80
+
+# Environment variables
+env:
+  GOOGLE_CLOUD_PROJECT: "YOUR_PROJECT_ID"
+  GOOGLE_CLOUD_REGION: "us-central1"
+  A2A_ENABLE: "true"
+  LOG_LEVEL: "INFO"
+
+# Secrets from Secret Manager
+secrets:
+  # Add your secrets here
+  # - name: OPENAI_API_KEY
+  #   version: latest
+  # - name: ANTHROPIC_API_KEY
+  #   version: latest
+
+# Service account (recommended)
+# service_account: "chief-sa@YOUR_PROJECT.iam.gserviceaccount.com"

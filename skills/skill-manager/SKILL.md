@@ -5,8 +5,12 @@ description: Automate creation, versioning, deployment, and synchronization of M
 
 # Skill Manager
 
-## Purpose
-Meta-skill for managing the complete lifecycle of all other Mapache Skills. Ensures skills are version-controlled in Git and automatically synchronized across all environments (Desktop, Code CLI, API).
+## When to use this skill
+Meta-skill for managing the complete lifecycle of all other Mapache Skills. Use this skill when the user wants to:
+- Create a new skill or scaffold a project structure.
+- Validate an existing skill for structure or security.
+- Deploy or synchronize skills across different environments.
+- Version, update, or search through the local skill library.
 
 ## Core Capabilities
 - **Create**: Scaffold new skills from templates with proper structure
@@ -34,17 +38,22 @@ Meta-skill for managing the complete lifecycle of all other Mapache Skills. Ensu
 skills/skill-name/
 ├── SKILL.md              # Required: YAML frontmatter + instructions
 ├── README.md             # Human documentation
-├── scripts/              # Optional: Executable code
-│   ├── __init__.py
-│   └── helper.py
-├── resources/            # Optional: Templates, data files
-│   └── template.json
-├── tests/                # Validation tests
-│   └── test_skill.py
-└── .skillmeta            # Version, author, dependencies
+├── .skillmeta            # Version, author, dependencies
+├── scripts/              # Executable code/tools
+├── resources/            # Antigravity: Templates, data files
+├── references/           # Gemini CLI: Static docs, examples
+├── assets/               # Gemini CLI: Templates, binary resources
+├── examples/             # Copilot: Usage examples
+└── tests/                # Validation tests
 ```
 
-## Key Operations
+## How to use it
+
+### General Principles
+- Always run scripts with the `--help` flag first to understand available options and save context window.
+- Ensure you are in the repository root: `C:\Users\Kurt Anderson\github projects\mapache-skills\`.
+
+### Core Operations
 
 ### 1. Create New Skill
 Scaffolds a new skill directory with proper structure and template content.
@@ -59,17 +68,14 @@ Scaffolds a new skill directory with proper structure and template content.
 4. User iterates with Claude on content
 5. Validates with `scripts/validate_skill.py`
 
-### 2. Validate Skill
-Checks skill for correctness and security before deployment.
-
-**Validation Checklist**:
-- ✅ YAML frontmatter is well-formed
-- ✅ Required fields present (`name`, `description`)
-- ✅ Markdown syntax is valid
-- ✅ Script files have proper permissions
-- ✅ No suspicious network calls to untrusted domains
-- ✅ File access restricted to safe directories
-- ✅ External dependencies documented
+### Review Checklist
+Before finalizing any skill management task, verify the following:
+- ✅ YAML frontmatter contains `name`, `description`, and `license` (satisfied for all agents).
+- ✅ Required files (e.g., `SKILL.md`) are present in the correct directory.
+- ✅ Markdown syntax is valid and follows the unified standard (Antigravity-style headings).
+- ✅ Folder structure uses standard conventions (`scripts/`, `resources/`, `references/`, `examples/`).
+- ✅ Script files have proper permissions and no malicious patterns.
+- ✅ External dependencies are documented and version-pinned if necessary.
 
 **Usage Pattern**:
 "Validate the n8n-flow-builder skill before deploying"
@@ -306,6 +312,14 @@ Since Warp terminal owns system-level tasks:
 - Set up and maintain symlinks
 - Execute file watchers as background services
 
+## Skill Output Standards
+
+To ensure high-quality and consistent feedback, all skills related to code review or assessment should follow these standards:
+
+- **Priority-Based Feedback**: Focus on critical issues first (security, performance, breaking patterns) before addressing minor improvements or stylistic choices. [Ref: Video 09:13]
+- **Actionable & Short**: Keep feedback concise and focused on specific, actionable steps to resolve the issue. [Ref: Video 09:21]
+- **Positive Reinforcement**: Acknowledge project strengths and well-implemented patterns to provide a balanced and helpful review. [Ref: Video 10:06]
+
 ## Best Practices
 
 ### Skill Naming Convention
@@ -367,6 +381,11 @@ Once skill-manager is working:
 - Skills are portable: work with any LLM that can read files
 - Git is your safety net: always commit before major changes
 - Desktop Commander can be buggy: GitHub MCP is more reliable for repo operations
+
+## How to provide feedback
+- Report success clearly with the location of new or modified files.
+- If deployment fails, provide specific error messages and suggested fixes.
+- For search operations, present results in a clean table or list.
 
 ## Resources
 

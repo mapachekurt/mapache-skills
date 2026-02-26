@@ -12,6 +12,14 @@ Meta-skill for creating new Antigravity skills grounded in real documentation. M
 
 ## The 5-Step Wizard Process
 
+### Phase 0: Define Evaluation Scenarios (CRITICAL)
+Before writing any instructions or scripts, you MUST define success.
+Tell the user: **"I am now designing evaluation scenarios for this skill."**
+
+1. Research "expert scenarios", certification exam questions, or common failure modes for this domain.
+2. Create a `tests/verification_suite.md` that lists specific prompts or tasks the skill *must* be able to solve once completed.
+3. This ensures the skill is grounded in outcomes, not just information.
+
 ### Step 1: Describe the Expertise
 Ask the user: **"What domain or technology should this skill cover?"**
 
@@ -40,13 +48,21 @@ Before generating the skill, ask the user 3-5 targeted questions to narrow scope
 
 Provide recommended defaults for each question so the user can just press Enter.
 
-### Step 4: Generate and Review
+## Folders and Progressive Disclosure
+To keep `SKILL.md` token-efficient, use the folder structure:
+- **`SKILL.md`**: Only constraints, high-level patterns, and "How to think".
+- **`references/`**: Bulk documentation, API specs, and long code examples. Load these ONLY when needed.
+- **`scripts/`**: Executable code that performs the heavy lifting.
+- **`assets/`**: Static templates, images, or configuration files.
+- **`tests/`**: The Phase 0 verification suite.
+
+## Generated Skill Structure
 Generate the `SKILL.md` file following the standard Antigravity skill format:
 
 ```markdown
 ---
 name: <skill-name>
-description: <one-line description>
+description: Use this skill to <action-oriented-description>
 ---
 
 # Skill: <Title>

@@ -40,3 +40,12 @@ When a bug is encountered:
 - **Never Orphan Work**: Always "Land the Plane" (`/land-the-plane`) before ending a session — `bd sync` + `git push` is non-negotiable.
 - **Artifact Bridge**: When generating an `implementation_plan.md`, offer to "slurp" its tasks into Beads for persistent tracking.
 - **Anti-Patterns**: Never use `bd edit` (interactive editor). Never skip claiming a task in multi-agent repos.
+
+
+## Supabase Standards (Domain-Driven)
+All Supabase projects MUST follow the domain-driven architecture:
+- **Schemas**: public (core), composio (apps), intelligence (RAG).
+- **Embeddings**: Gemini text-embedding-004 (768 dimensions).
+- **Naming**: snake_case, no schema prefixes in table names.
+- **Documentation**: All entities must have SQL COMMENT ON statements.
+[Ref: SUPABASE_STANDARDS.md]

@@ -29,6 +29,7 @@ class SkillValidator:
         
         self.check_skill_md_exists()
         self.check_yaml_frontmatter()
+        self.check_directory_structure()
         
         return self.report()
     
@@ -46,7 +47,6 @@ class SkillValidator:
         if not skill_md.exists():
             return
 
-        
         content = skill_md.read_text(encoding='utf-8')
         
         if not content.startswith('---\n'):
@@ -65,6 +65,13 @@ class SkillValidator:
         if 'description:' not in frontmatter:
             self.errors.append("YAML frontmatter missing 'description' field")
         
+        # Guide recommendation: action-oriented description
+        desc_match = re.search(r'description:\s*(.+)', frontmatter)
+        if desc_match:
+            description = desc_match.group(1).strip()
+            if not any(word in description.lower() for word in ["use", "help", "guide", "manage", "create", "automate"]):
+                self.warnings.append(f"Description should be action-oriented (e.g., 'Use this skill to...'). Currently: '{description}'")
+
         name_match = re.search(r'name:\s*(.+)', frontmatter)
         if name_match:
             name = name_match.group(1).strip()
@@ -72,6 +79,12 @@ class SkillValidator:
                 self.warnings.append(
                     f"Skill name '{name}' should be kebab-case"
                 )
+
+    def check_directory_structure(self):
+        """Check for recommended directory structure."""
+        for folder in ["scripts", "references", "assets"]:
+           if not (self.skill_path / folder).exists():
+               self.warnings.append(f"Recommended folder '{folder}/' is missing.")
     
     def report(self):
         """Print validation report and return success status."""

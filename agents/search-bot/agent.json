@@ -1,0 +1,32 @@
+{
+  "id": "search-bot-v1",
+  "version": "1.0.0",
+  "name": "SearchBot Agent",
+  "description": "Performs web searches and returns summaries",
+  "capabilities": [
+    "web_search"
+  ],
+  "endpoints": {
+    "main": "https://[DEPLOYMENT-URL]/a2a/v1/message",
+    "discovery": "https://[DEPLOYMENT-URL]/.well-known/agent.json"
+  },
+  "auth": {
+    "type": "oauth2",
+    "scope": "https://www.googleapis.com/auth/cloud-platform"
+  },
+  "supportedInterfaces": [
+    "json-rpc",
+    "http+json"
+  ],
+  "skills": [
+    {
+      "name": "search-bot",
+      "description": "Performs web searches and returns summaries"
+    }
+  ],
+  "metadata": {
+    "created": "2026-01-29T13:02:55.096441",
+    "framework": "google-adk",
+    "framework_version": "2.1.0+"
+  }
+}

@@ -14,22 +14,26 @@ from datetime import datetime
 
 SKILL_TEMPLATE = """---
 name: {name}
-description: {description}
+description: Use this skill to {description}
+license: MIT
 ---
 
 # {title}
 
-## Purpose
-[Describe what this skill does and when Claude should use it]
+## Overview
+[Provide a 2-3 sentence overview of this skill's expertise and mental model]
 
-## Usage Patterns
-[Examples of how users will invoke this skill]
+## Core Constraints
+[DO NOT do X, ALWAYS do Y. Focus on constraints that define the quality of the output]
 
-## Key Instructions
-[Step-by-step guidance for Claude]
+## How to use it
+[Provide step-by-step guidance, patterns, and examples for the agent to follow]
 
-## Examples
-[Show concrete examples of this skill in action]
+## Review Checklist
+[Specific points the agent should verify during or after execution]
+
+## How to provide feedback
+[Expected format for reporting completion or issues to the user]
 
 ## Notes
 - Created: {created_date}
@@ -57,13 +61,13 @@ See SKILL.md for detailed instructions.
 - v1.0.0 - Initial release
 """
 
-SKILLMETA_TEMPLATE = """{
+SKILLMETA_TEMPLATE = """{{
   "version": "1.0.0",
   "author": "Kurt Anderson",
   "created": "{created_date}",
   "dependencies": [],
   "tags": []
-}
+}}
 """
 
 
@@ -86,8 +90,10 @@ def create_skill(name: str, description: str, base_path: str = None):
     # Create directory structure
     skill_dir.mkdir(parents=True)
     (skill_dir / "scripts").mkdir(exist_ok=True)
-    (skill_dir / "resources").mkdir(exist_ok=True)
-
+    (skill_dir / "resources").mkdir(exist_ok=True)  # Antigravity convention
+    (skill_dir / "references").mkdir(exist_ok=True) # Gemini CLI convention
+    (skill_dir / "assets").mkdir(exist_ok=True)     # Gemini CLI convention
+    (skill_dir / "examples").mkdir(exist_ok=True)   # Copilot convention
     (skill_dir / "tests").mkdir(exist_ok=True)
     
     # Generate title (Title Case)
